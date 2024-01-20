@@ -10,9 +10,9 @@
 # Scripts
 
 
-## AWS CloudFormation Script - run.bat
+## AWS CloudFormation Script - run.bat/run.sh
 
-run.bat: Tears up or tears down the infrastructure.
+run.bat/run.sh: Tears up or tears down the infrastructure.
 
 
 ### Prerequisites
@@ -28,9 +28,9 @@ Empty an S3 bucket.
 
 Usage: run.bat emptyS3 <S3BUCKET> <REGION> <PROFILE>
 
-S3BUCKET: The name of the S3 bucket to be emptied.
-REGION: The AWS region where the S3 bucket is located.
-PROFILE: The AWS CLI profile to be used.
+- S3BUCKET: The name of the S3 bucket to be emptied.
+- REGION: The AWS region where the S3 bucket is located.
+- PROFILE: The AWS CLI profile to be used.
 
 ### 2. uploadS3
 
@@ -38,10 +38,10 @@ Upload a file to an S3 bucket.
 
 Usage: run.bat uploadS3 <S3BUCKET> <REGION> <PROFILE> <FILE>
 
-S3BUCKET: The name of the S3 bucket to upload the file to.
-REGION: The AWS region where the S3 bucket is located.
-PROFILE: The AWS CLI profile to be used.
-FILE: The path to the file to be uploaded.
+- S3BUCKET: The name of the S3 bucket to upload the file to.
+- REGION: The AWS region where the S3 bucket is located.
+- PROFILE: The AWS CLI profile to be used.
+- FILE: The path to the file to be uploaded.
 
 ### 3. deploy
 
@@ -49,10 +49,10 @@ Deploy a CloudFormation stack.
 
 Usage: run.bat deploy <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION>
 
-STACK_NAME: The name of the CloudFormation stack to be deployed.
-TEMPLATE_NAME: The path to the CloudFormation template file.
-PARMS_NAME: The path to the parameter file for the CloudFormation stack.
-REGION: The AWS region where the CloudFormation stack will be deployed.
+- STACK_NAME: The name of the CloudFormation stack to be deployed.
+- TEMPLATE_NAME: The path to the CloudFormation template file.
+- PARMS_NAME: The path to the parameter file for the CloudFormation stack.
+- REGION: The AWS region where the CloudFormation stack will be deployed.
 
 ### 4. delete
 
@@ -60,9 +60,9 @@ Delete a CloudFormation stack.
 
 Usage: run.bat delete <STACK_NAME> <REGION> <PROFILE>
 
-STACK_NAME: The name of the CloudFormation stack to be deleted.
-REGION: The AWS region where the CloudFormation stack is located.
-PROFILE: The AWS CLI profile to be used.
+- STACK_NAME: The name of the CloudFormation stack to be deleted.
+- REGION: The AWS region where the CloudFormation stack is located.
+- PROFILE: The AWS CLI profile to be used.
 
 ### 5. preview
 
@@ -70,14 +70,13 @@ Preview changes for a CloudFormation stack.
 
 Usage: run.bat preview <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION>
 
-STACK_NAME: The name of the CloudFormation stack to preview changes for.
-TEMPLATE_NAME: The path to the CloudFormation template file.
-PARMS_NAME: The path to the parameter file for the CloudFormation stack.
-REGION: The AWS region where the CloudFormation stack is located.
-Make sure to adjust the values in these examples according to your actual use case and AWS environment.
+- STACK_NAME: The name of the CloudFormation stack to preview changes for.
+- TEMPLATE_NAME: The path to the CloudFormation template file.
+- PARMS_NAME: The path to the parameter file for the CloudFormation stack.
+- REGION: The AWS region where the CloudFormation stack is located.
 
 
-## Example usage:
+## Example usage (in Windows):
 
 To tear up:
 
