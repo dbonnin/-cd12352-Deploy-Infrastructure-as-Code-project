@@ -102,9 +102,9 @@ Resources:
       LaunchTemplate:
         LaunchTemplateId: !Ref WebAppLaunchTemplate
         Version: !GetAtt WebAppLaunchTemplate.LatestVersionNumber
-      MinSize: 1
-      DesiredCapacity: 1
-      MaxSize: 4
+      MinSize: 2
+      DesiredCapacity: 2
+      MaxSize: 6
       TargetGroupARNs:
       - !Ref WebAppTargetGroup    
 
@@ -166,12 +166,6 @@ Resources:
         BlockPublicPolicy: false
         IgnorePublicAcls: false
         RestrictPublicBuckets: false      
-      VersioningConfiguration:
-        Status: Enabled
-      LifecycleConfiguration:
-        Rules:
-          - Status: "Enabled"
-            NoncurrentVersionExpirationInDays: 10
       BucketEncryption:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
@@ -208,6 +202,7 @@ Resources:
               OriginProtocolPolicy: http-only
         DefaultCacheBehavior:
           TargetOriginId: WebAppLB
+          ViewerProtocolPolicy: allow-all
           ForwardedValues:
             QueryString: false
             Cookies:

@@ -2,54 +2,103 @@ Solution Diagram
 
 ![Solution Diagram](./aws-udacity.drawio.png)
 
+CloudFront Templates:
+
+network.yml: Create the necesary network assets.
+udagram.yml: Create the necesary resources (security groups, autoscaling groups, load balancers, launche template, etc.).
+
+Scripts
 
 
-# ND9991 - Course 2 - Infrastructure as Code
+# AWS CloudFormation Script - run.bat
 
-This repository contains the starter code for the final project of course 2 Infrastructure as Code in the Cloud DevOps Engineer Nanodegree.
+run.bat: Tears up or tears down the infrastructure.
 
-Please note that all supporting material for this course can be found in [this Github repository](https://github.com/udacity/cd12352-Deploy-Infrastructure-as-Code).
 
-# Deploy a high-availability web app using CloudFormation
+## Prerequisites
 
-In this project, you’ll deploy web servers for a highly available web app using CloudFormation. You will write the code that creates and deploys the infrastructure and application for an Instagram-like app from the ground up. You will begin with deploying the networking components, followed by servers, security roles and software.  The procedure you follow here will become part of your portfolio of cloud projects. You’ll do it exactly as it’s done on the job - following best practices and scripting as much as possible. 
+- [AWS CLI](https://aws.amazon.com/cli/) installed and configured.
+- Basic understanding of AWS CloudFormation.
 
-## Getting Started
+Options:
 
-### Dependencies
+1. emptyS3
 
-1. AWS CLI installed and configured in your workspace using an AWS IAM role with Administrator permissions (as reviewed in the course).
+Empty an S3 bucket.
 
-2. Access to a diagram creator software of your choice.
+Usage: run.bat emptyS3 <S3BUCKET> <REGION> <PROFILE>
 
-3. Your favorite IDE or text editor ready to work.
+S3BUCKET: The name of the S3 bucket to be emptied.
+REGION: The AWS region where the S3 bucket is located.
+PROFILE: The AWS CLI profile to be used.
 
-### Installation
+2. uploadS3
 
-You can get started by cloning this repo in your local workspace:
+Upload a file to an S3 bucket.
 
-```
-git clone git@github.com:udacity/-cd12352-Deploy-Infrastructure-as-Code-project.git
-```
+Usage: run.bat uploadS3 <S3BUCKET> <REGION> <PROFILE> <FILE>
 
-## Testing
+S3BUCKET: The name of the S3 bucket to upload the file to.
+REGION: The AWS region where the S3 bucket is located.
+PROFILE: The AWS CLI profile to be used.
+FILE: The path to the file to be uploaded.
 
-No tests required for this project.
+3. deploy
 
-## Project Instructions
+Deploy a CloudFormation stack.
 
-1. Design your solution diagram using a tool of your choice and export it into an image file.
+Usage: run.bat deploy <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION>
 
-2. Add all the CloudFormation networking resources and parameters to the `network.yml` and `network-parameters.json` files inside the `starter` folder of this repo.
+STACK_NAME: The name of the CloudFormation stack to be deployed.
+TEMPLATE_NAME: The path to the CloudFormation template file.
+PARMS_NAME: The path to the parameter file for the CloudFormation stack.
+REGION: The AWS region where the CloudFormation stack will be deployed.
 
-3. Add all the CloudFormation application resources and parameters to the `udagram.yml` and `udagram-parameters.json` files inside the `starter` folder of this repo.
+4. delete
 
-4. Create any required script files to automate spin up and tear down of the CloudFormation stacks.
+Delete a CloudFormation stack.
 
-5. Update the README.md file in the `starter` folder with creation and deletion instructions, as well as any useful information regarding your solution.
-   
-6.  Submit your solution as a GitHub link or a zipped file containing the diagram image, CloudFormation yml and json files, automation scripts and README file.
+Usage: run.bat delete <STACK_NAME> <REGION> <PROFILE>
 
-## License
+STACK_NAME: The name of the CloudFormation stack to be deleted.
+REGION: The AWS region where the CloudFormation stack is located.
+PROFILE: The AWS CLI profile to be used.
 
-[License](LICENSE.txt)
+5. preview
+
+Preview changes for a CloudFormation stack.
+
+Usage: run.bat preview <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION>
+
+STACK_NAME: The name of the CloudFormation stack to preview changes for.
+TEMPLATE_NAME: The path to the CloudFormation template file.
+PARMS_NAME: The path to the parameter file for the CloudFormation stack.
+REGION: The AWS region where the CloudFormation stack is located.
+Make sure to adjust the values in these examples according to your actual use case and AWS environment.
+
+
+Example usage:
+
+To tear up:
+
+./run.bat deploy MyStackName template.yaml parameters.json us-west-2 my-profile
+
+if the stack created and S3 Bucket, use this to upload the index.html to test the cloudfront
+
+./run.bat uploadS3 MyS3Bucket us-west-2 my-profile myfile.txt
+
+Preview Modifications:
+
+You can use to create change set using the "preview" action
+
+./run.bat deploy MyStackName template.yaml parameters.json us-west-2 my-profile
+
+To tear down:
+
+Empty the S3 bucket
+
+./run.bat emptyS3 MyS3Bucket us-west-2 my-profile
+
+Delete the stack
+
+./run.bat delete MyStackName us-west-2 my-profile
