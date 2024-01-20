@@ -1,13 +1,13 @@
-Solution Diagram
+# Solution Diagram
 
 ![Solution Diagram](./aws-udacity.drawio.png)
 
-CloudFront Templates:
+# CloudFront Templates:
 
-network.yml: Create the necesary network assets.
-udagram.yml: Create the necesary resources (security groups, autoscaling groups, load balancers, launche template, etc.).
+- network.yml: Create the necesary network assets.
+- udagram.yml: Create the necesary resources (security groups, autoscaling groups, load balancers, launche template, etc.).
 
-Scripts
+# Scripts
 
 
 # AWS CloudFormation Script - run.bat
@@ -15,14 +15,14 @@ Scripts
 run.bat: Tears up or tears down the infrastructure.
 
 
-## Prerequisites
+### Prerequisites
 
 - [AWS CLI](https://aws.amazon.com/cli/) installed and configured.
 - Basic understanding of AWS CloudFormation.
 
-Options:
+### Options:
 
-1. emptyS3
+### 1. emptyS3
 
 Empty an S3 bucket.
 
@@ -32,7 +32,7 @@ S3BUCKET: The name of the S3 bucket to be emptied.
 REGION: The AWS region where the S3 bucket is located.
 PROFILE: The AWS CLI profile to be used.
 
-2. uploadS3
+### 2. uploadS3
 
 Upload a file to an S3 bucket.
 
@@ -43,7 +43,7 @@ REGION: The AWS region where the S3 bucket is located.
 PROFILE: The AWS CLI profile to be used.
 FILE: The path to the file to be uploaded.
 
-3. deploy
+### 3. deploy
 
 Deploy a CloudFormation stack.
 
@@ -54,7 +54,7 @@ TEMPLATE_NAME: The path to the CloudFormation template file.
 PARMS_NAME: The path to the parameter file for the CloudFormation stack.
 REGION: The AWS region where the CloudFormation stack will be deployed.
 
-4. delete
+### 4. delete
 
 Delete a CloudFormation stack.
 
@@ -64,7 +64,7 @@ STACK_NAME: The name of the CloudFormation stack to be deleted.
 REGION: The AWS region where the CloudFormation stack is located.
 PROFILE: The AWS CLI profile to be used.
 
-5. preview
+### 5. preview
 
 Preview changes for a CloudFormation stack.
 
@@ -77,7 +77,7 @@ REGION: The AWS region where the CloudFormation stack is located.
 Make sure to adjust the values in these examples according to your actual use case and AWS environment.
 
 
-Example usage:
+## Example usage:
 
 To tear up:
 
