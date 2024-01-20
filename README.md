@@ -10,7 +10,7 @@
 # Scripts
 
 
-# AWS CloudFormation Script - run.bat
+## AWS CloudFormation Script - run.bat
 
 run.bat: Tears up or tears down the infrastructure.
 
