@@ -45,13 +45,13 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: !Ref EnvironmentName
-      
+          Value: !Ref EnvironmentName      
+
   InternetGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       InternetGatewayId: !Ref InternetGateway
-      VpcId: !Ref VPC
+      VpcId: !Ref VPC  
 
   PublicSubnet1: 
     Type: AWS::EC2::Subnet
@@ -63,6 +63,8 @@ Resources:
       Tags: 
         - Key: Name 
           Value: !Sub ${EnvironmentName} Public Subnet (AZ1)
+        - Key: Type
+          Value: Public          
 
   PublicSubnet2: 
     Type: AWS::EC2::Subnet
@@ -74,6 +76,9 @@ Resources:
       Tags: 
         - Key: Name 
           Value: !Sub ${EnvironmentName} Public Subnet (AZ2)
+        - Key: Type
+          Value: Public
+          
 
   PrivateSubnet1: 
     Type: AWS::EC2::Subnet

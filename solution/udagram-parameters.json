@@ -1,6 +1,11 @@
 [
     {
         "ParameterKey": "EnvironmentName",
-        "ParameterValue": "UdacityProject"
-    }
+        "ParameterValue": "DbonninUdagram"
+    },
+    {
+        "ParameterKey": "S3BucketName",
+        "ParameterValue": "dbonnin-web-servers-bucket"
+    } 
+    
 ]

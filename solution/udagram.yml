@@ -4,6 +4,10 @@ Parameters:
     Type: String
     Description: Environment prefix
 
+  S3BucketName:
+    Type: String
+    Description: S3 Bucket name    
+
 Resources:
 
 #Security groups
@@ -160,7 +164,7 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dbonnin-web-servers-bucket
+      BucketName: !Sub ${S3BucketName}
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
@@ -231,7 +235,7 @@ Outputs:
 
   LoadBalancerDNSName:
     Description: The DNS name of the Load Balancer
-    Value: !GetAtt WebAppLB.DNSName      
+    Value: !Join ["", ["http://", !GetAtt WebAppLB.DNSName]]
 
   CloudFrontDistributionDomainName:
     Description: Domain name of the CloudFront distribution
