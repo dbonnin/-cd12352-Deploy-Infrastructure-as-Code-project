@@ -1,3 +1,11 @@
+# LoadBalancer URL
+
+http://udagra-webap-a4ugrqchdwmj-1832003279.us-east-1.elb.amazonaws.com/
+
+# CloudFront distribuiton
+
+https://d2gj5ygklyohxp.cloudfront.net/
+
 # Solution Diagram
 
 ![Solution Diagram](./aws-udacity.drawio.png)

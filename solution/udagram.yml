@@ -8,6 +8,10 @@ Parameters:
     Type: String
     Description: S3 Bucket name    
 
+  GitHubRepoUrl:
+    Type: String
+    Description: GitHub Repo Url
+
 Resources:
 
 #Security groups
@@ -50,6 +54,9 @@ Resources:
             #!/bin/bash
             sudo apt-get update -y
             sudo apt-get install nginx -y
+            sudo apt-get install git -y
+            sudo git clone https://${GitHubRepoUrl} /tmp/public
+            sudo cp /tmp/public/index.html /usr/share/nginx/html/
             sudo service nginx start
         ImageId: ami-0557a15b87f6559cf
         SecurityGroupIds:
